@@ -3,5 +3,7 @@
 /data/
 /dist/
 /old/
+/src/main/python/__pycache__/
 /target/
 /venv/
+/logs/*.log

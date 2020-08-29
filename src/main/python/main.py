@@ -10,6 +10,7 @@ import stun
 from urllib.request import urlopen
 from tkinter import *
 from functools import partial
+from os import path
 
 
 now = datetime.datetime.now()
@@ -26,7 +27,6 @@ def authentication():
         webtokensrv = str(webtoken.get())
         data = json.loads(urlopen('https://coderlog.top/cdlsrv/srv.php?token='+webtokensrv).read().decode("utf-8"))
         get_token(username.get(), password.get())
-        
         tkWindow.destroy()
     tkWindow = Tk()  
     tkWindow.geometry('300x110')  
@@ -34,20 +34,41 @@ def authentication():
 
     usernameLabel = Label(tkWindow, text="Username").grid(row=0, column=0)
     username = StringVar()
-    usernameEntry = Entry(tkWindow, textvariable=username, width=30).grid(row=0, column=1)  
+    usernameEntry = Entry(tkWindow, textvariable=username, width=30).grid(row=0, column=1)
+    
 
     passwordLabel = Label(tkWindow,text="Password").grid(row=1, column=0)  
     password = StringVar()
     passwordEntry = Entry(tkWindow, textvariable=password, show='*', width=30).grid(row=1, column=1)  
+    
+
 
     webtokenLabel = Label(tkWindow,text="Web token").grid(row=2, column=0)  
     webtoken = StringVar()
-    webtokenEntry = Entry(tkWindow, textvariable=webtoken, width=30).grid(row=2, column=1)  
+    webtokenEntry = Entry(tkWindow, textvariable=webtoken, width=30).grid(row=2, column=1) 
+
+
+    ''' Keep track of the checkbox and save your login data '''
+    save_data = BooleanVar()
+    check = Checkbutton(tkWindow, text='Remember me', variable=save_data).grid(row=3, column=0)  
+
+    def on_change(*args):
+        save = {'login': str(username.get()), 'password': str(password.get()), 'token': str(webtoken.get())}
+        with open('user_data.json', 'w') as f:
+            f.write(json.dumps(save))
+
+    save_data.trace('w', on_change)
+
+    if (path.exists("user_data.json")):
+        with open('user_data.json') as f:
+            file_content = f.read()
+            user_data = json.loads(file_content)
+        username.set(user_data['login'])
+        password.set(user_data['password'])
+        webtoken.set(user_data['token'])
 
     validateLogin = partial(validateLogin, username, password, webtoken)
-
     loginButton = Button(tkWindow, text="Login", command=validateLogin).grid(row=4, column=0)  
-    
     
     tkWindow.mainloop()
 
@@ -112,8 +133,8 @@ def connect():
 
     server = response_body['connection']['proxyserver']
     port = response_body['connection']['proxyport']
-    ipaddress = str(stun.get_ip_info())
-    logger().info(" | "+date_log+" | Connect to server: "+server+":"+port+" From: "+ipaddress+"| Username: "+os.getlogin())
+    
+    logger().info(" | "+date_log+" | Connect to server: "+server+":"+port+" | Username: "+os.getlogin())
     os.system('wt ssh '+data['username']+'@'+ server + ' -p'+port)
 
 
