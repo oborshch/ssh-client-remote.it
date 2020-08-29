@@ -3,8 +3,9 @@
 /data/
 /dist/
 /old/
-/src/main/python/__pycache__/
+/src/main/python/__pycache__/*.pyc
 /target/
 /venv/
+/wiki/
 /logs/*.log
 user_data.json
