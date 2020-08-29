@@ -60,15 +60,15 @@ fbs installer
 Authorization window:<br>
 ![Main Window](https://coderlog.top/github/images/main_window.png)<br>
 
-You will receive the authorization data in your profile at remote.it!
-Description of login fields:
-**Username** - account login (email)
-**Password** - account password
+You will receive the authorization data in your profile at remote.it!<br>
+Description of login fields:<br>
+**Username** - account login (email)<br>
+**Password** - account password<br>
 **Device address** - The Service ID of your connection can be found in a pop-up window when you click on the connected device.<br>
 ![Device address](https://coderlog.top/github/images/service_id.png)<br>
 **Developer key** - This is your unique developer API key for using and accessing remote.it API. Do not share it with anyone. You can find it in your account settings:<br>
 ![Device address](https://coderlog.top/github/images/devkey.png)<br>
-**SSH Username** - user login on your server
+**SSH Username** - user login on your server<br>
 **Remember me** - checkbox to save all authorization data into configuration file
 After filling in all fields, press **Login**.
 If all fields are filled in correctly, you will be logged in and the **Windows terminal** window will open asking you to enter a password from your server user account.
@@ -84,9 +84,9 @@ on CDLSRV
 
 ## Dependencies/ Software used
 
-**Python 3.6.8** [Download](https://www.python.org/downloads/release/python-368/)
-**NSIS 3.06.1** [Download](https://sourceforge.net/projects/nsis/files/NSIS%203/3.06.1/)
-**Windows Terminal 1.2.2381.0** [Windows store](https://www.microsoft.com/uk-ua/p/windows-terminal/9n0dx20hk701) | [GitHub](https://github.com/microsoft/terminal)
+**Python 3.6.8** [Download](https://www.python.org/downloads/release/python-368/)<br>
+**NSIS 3.06.1** [Download](https://sourceforge.net/projects/nsis/files/NSIS%203/3.06.1/)<br>
+**Windows Terminal 1.2.2381.0** [Windows store](https://www.microsoft.com/uk-ua/p/windows-terminal/9n0dx20hk701) | [GitHub](https://github.com/microsoft/terminal)<br>
 
 ## ToDo
 * Encryption of user data entered during authorization
@@ -157,15 +157,15 @@ fbs installer
 Окно авторизации:<br>
 ![Main Window](https://coderlog.top/github/images/main_window.png)<br>
 
-Данные для авторизации вы получите в своём профиле на remote.it!
-Описание полей авторизации:
-**Username** - логин учетной записи (email)
-**Password** - пароль учётной записи
+Данные для авторизации вы получите в своём профиле на remote.it!<br>
+Описание полей авторизации:<br>
+**Username** - логин учетной записи (email)<br>
+**Password** - пароль учётной записи<br>
 **Device address** - Service ID вашего подключения можно найти в сплывающем окне при нажатии на подключённое устройство.<br>
 ![Device address](https://coderlog.top/github/images/service_id.png)<br>
 **Developer key** - Это ваш уникальный ключ API разработчика для использования и доступа к remote.it API. Не делитесь им ни с кем. Найти его можете в настройках аккаунта:<br>
 ![Device address](https://coderlog.top/github/images/devkey.png)<br>
-**SSH Username** - логин пользователя на вашем сервере
+**SSH Username** - логин пользователя на вашем сервере<br>
 **Remember me** - чекбокс для сохранения всех данных авторизации в конфигурационный файл
 После заполнения всех полей нажимаем **Login**
 Если все поля заполненны правильно, произойдёт авторизация и откроется окно **Windows terminal** с предложением ввести пароль от учетной записи пользователя вашего сервера.
@@ -181,9 +181,9 @@ fbs installer
 
 ## Зависимости/Используемое ПО
 
-**Python 3.6.8** [Скачать](https://www.python.org/downloads/release/python-368/)
-**NSIS 3.06.1** [Скачать](https://sourceforge.net/projects/nsis/files/NSIS%203/3.06.1/)
-**Windows Terminal 1.2.2381.0** [Windows store](https://www.microsoft.com/uk-ua/p/windows-terminal/9n0dx20hk701) | [GitHub](https://github.com/microsoft/terminal)
+**Python 3.6.8** [Скачать](https://www.python.org/downloads/release/python-368/)<br>
+**NSIS 3.06.1** [Скачать](https://sourceforge.net/projects/nsis/files/NSIS%203/3.06.1/)<br>
+**Windows Terminal 1.2.2381.0** [Windows store](https://www.microsoft.com/uk-ua/p/windows-terminal/9n0dx20hk701) | [GitHub](https://github.com/microsoft/terminal)<br>
 
 ## ToDo
 * Шифрование пользовательских данных вводимых при авторизации
