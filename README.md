@@ -27,7 +27,7 @@ address for connection. This is not always convenient. So I decided to automate 
 
 ## Installation
 
-The installation of the program is very simple. Download the installer, run it and wait for the installation to complete.
+The installation of the program is very simple. [Download](https://github.com/alexborsch/ssh-client-remote.it/releases/tag/0.1.354) the installer, run it and wait for the installation to complete.
 
 ## Installation from source code
 
@@ -124,7 +124,7 @@ CDLSRV - утилита для подключения к домашнему се
 
 ## Установка
 
-Установка программы очень простая. Скачиваете инстралятор, запускаете и дожидаетесь окончания установки
+Установка программы очень простая. Скачиваете [инстралятор](https://github.com/alexborsch/ssh-client-remote.it/releases/tag/0.1.354) , запускаете и дожидаетесь окончания установки
 
 ## Установка из исходного кода
 
