@@ -7,3 +7,4 @@
 /target/
 /venv/
 /logs/*.log
+user_data.json

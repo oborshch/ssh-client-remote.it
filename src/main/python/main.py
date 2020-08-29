@@ -22,38 +22,54 @@ date_log = str(now.strftime("%d-%m-%Y %H:%M:%S"))
 
 def authentication():
 
-    def validateLogin(username, password, webtoken):
+    def validateLogin(username, password, deviceaddress, developerkey, sshusername):
         global data
-        webtokensrv = str(webtoken.get())
-        data = json.loads(urlopen('https://coderlog.top/cdlsrv/srv.php?token='+webtokensrv).read().decode("utf-8"))
-        get_token(username.get(), password.get())
+        global key
+        global service
+        global login
+        
+        key = developerkey.get()
+        service = deviceaddress.get()
+        login = sshusername.get()
+        with open('user_data.json') as f:
+            file_content = f.read()
+            data = json.loads(file_content)
+        get_token(username.get(), password.get(), developerkey.get())
         tkWindow.destroy()
     tkWindow = Tk()  
-    tkWindow.geometry('300x110')  
+    tkWindow.geometry('350x310')  
     tkWindow.title('CDLSRV | Login remote.it account')
-
+    ''' remote.it login '''
     usernameLabel = Label(tkWindow, text="Username").grid(row=0, column=0)
     username = StringVar()
     usernameEntry = Entry(tkWindow, textvariable=username, width=30).grid(row=0, column=1)
     
-
+    ''' remote.it password '''
     passwordLabel = Label(tkWindow,text="Password").grid(row=1, column=0)  
     password = StringVar()
     passwordEntry = Entry(tkWindow, textvariable=password, show='*', width=30).grid(row=1, column=1)  
     
+    ''' remote.it device address '''
+    deviceaddressLabel = Label(tkWindow,text="Device address").grid(row=2, column=0)  
+    deviceaddress = StringVar()
+    deviceaddressEntry = Entry(tkWindow, textvariable=deviceaddress, width=30).grid(row=2, column=1) 
+    
+    ''' Developer key '''
+    developerkeyLabel = Label(tkWindow,text="Developer key").grid(row=3, column=0)  
+    developerkey = StringVar()
+    developerkeyEntry = Entry(tkWindow, textvariable=developerkey, width=30).grid(row=3, column=1)
 
-
-    webtokenLabel = Label(tkWindow,text="Web token").grid(row=2, column=0)  
-    webtoken = StringVar()
-    webtokenEntry = Entry(tkWindow, textvariable=webtoken, width=30).grid(row=2, column=1) 
-
+    ''' SSH username '''
+    sshusernameLabel = Label(tkWindow,text="SSH username").grid(row=4, column=0)  
+    sshusername = StringVar()
+    sshusernameEntry = Entry(tkWindow, textvariable=sshusername, width=30).grid(row=4, column=1)
 
     ''' Keep track of the checkbox and save your login data '''
     save_data = BooleanVar()
-    check = Checkbutton(tkWindow, text='Remember me', variable=save_data).grid(row=3, column=0)  
+    check = Checkbutton(tkWindow, text='Remember me', variable=save_data).grid(row=5, column=0)  
 
     def on_change(*args):
-        save = {'login': str(username.get()), 'password': str(password.get()), 'token': str(webtoken.get())}
+        save = {'login': str(username.get()), 'password': str(password.get()), 'deviceaddress': str(deviceaddress.get()), 'developerkey': str(developerkey.get()), 'sshusername': str(sshusername.get())}
         with open('user_data.json', 'w') as f:
             f.write(json.dumps(save))
 
@@ -65,10 +81,12 @@ def authentication():
             user_data = json.loads(file_content)
         username.set(user_data['login'])
         password.set(user_data['password'])
-        webtoken.set(user_data['token'])
+        deviceaddress.set(user_data['deviceaddress'])
+        developerkey.set(user_data['developerkey'])
+        sshusername.set(user_data['sshusername'])
 
-    validateLogin = partial(validateLogin, username, password, webtoken)
-    loginButton = Button(tkWindow, text="Login", command=validateLogin).grid(row=4, column=0)  
+    validateLogin = partial(validateLogin, username, password, deviceaddress, developerkey, sshusername)
+    loginButton = Button(tkWindow, text="Login", command=validateLogin).grid(row=6, column=0)  
     
     tkWindow.mainloop()
 
@@ -80,7 +98,7 @@ def logger():
         format='|%(levelname)s|%(name)s|%(process)d:%(processName)s| %(lineno)d:%(funcName)s:%(filename)s %(message)s|%(pathname)s|',
         level=logging.INFO,
         handlers=[
-            logging.FileHandler(data['log_dir']+"/"+data['log_file'], 'a', 'utf-8'),
+            logging.FileHandler('logs/cdl.log', 'a', 'utf-8'),
             logging.StreamHandler()
         ])
     return logging
@@ -88,11 +106,11 @@ def logger():
 
 ''' Get token '''
 
-def get_token(username, password):
+def get_token(username, password, developerkey):
     logger().info(" | "+date_log+" | Get token | Username: "+os.getlogin())
 
     headers = {
-        "developerkey": data['developerkey']
+        "developerkey": developerkey
     }
     body = {
         "password": password,
@@ -119,23 +137,23 @@ def get_token(username, password):
 
 def connect():
     headers = {
-        "developerkey": data['developerkey'],
+        "developerkey": key,
         "token": token
     }
     body = {
-        "deviceaddress": data['deviceaddress'],
-        "wait": data['wait'],
-        "hostip":data['hostip']
+        "deviceaddress": service,
+        "wait": 'true',
+        "hostip": '0.0.0.0'
     }
 
-    response = requests.post(data['url'], data=json.dumps(body), headers=headers)
+    response = requests.post('https://api.remot3.it/apv/v27/device/connect', data=json.dumps(body), headers=headers)
     response_body = response.json()
 
     server = response_body['connection']['proxyserver']
     port = response_body['connection']['proxyport']
     
     logger().info(" | "+date_log+" | Connect to server: "+server+":"+port+" | Username: "+os.getlogin())
-    os.system('wt ssh '+data['username']+'@'+ server + ' -p'+port)
+    os.system('wt ssh '+login+'@'+ server + ' -p'+port)
 
 
 
