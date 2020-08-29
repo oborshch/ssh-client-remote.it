@@ -1,6 +1,6 @@
 {
-    "app_name": "cdl-server",
+    "app_name": "CDLSRV SSH Client",
     "author": "Alex Borsch",
     "main_module": "src/main/python/main.py",
-    "version": "0.0.0"
+    "version": "0.1.354"
 }

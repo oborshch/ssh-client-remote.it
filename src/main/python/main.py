@@ -11,6 +11,7 @@ from urllib.request import urlopen
 from tkinter import *
 from functools import partial
 from os import path
+import webbrowser
 
 
 now = datetime.datetime.now()
@@ -36,9 +37,15 @@ def authentication():
             data = json.loads(file_content)
         get_token(username.get(), password.get(), developerkey.get())
         tkWindow.destroy()
+    def faq():
+        return webbrowser.open('https://github.com/alexborsch/ssh-client-remote.it')
+
     tkWindow = Tk()  
-    tkWindow.geometry('350x310')  
+    tkWindow.geometry('330x180+300+300')
+    tkWindow.resizable(width=False, height=False)
+    tkWindow.iconbitmap('Icon.ico')  
     tkWindow.title('CDLSRV | Login remote.it account')
+
     ''' remote.it login '''
     usernameLabel = Label(tkWindow, text="Username").grid(row=0, column=0)
     username = StringVar()
@@ -87,7 +94,7 @@ def authentication():
 
     validateLogin = partial(validateLogin, username, password, deviceaddress, developerkey, sshusername)
     loginButton = Button(tkWindow, text="Login", command=validateLogin).grid(row=6, column=0)  
-    
+    infoButton = Button(tkWindow, text="FAQ", command=faq).grid(row=6, column=1)
     tkWindow.mainloop()
 
 
