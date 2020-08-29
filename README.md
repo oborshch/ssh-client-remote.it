@@ -57,24 +57,24 @@ fbs installer
 
 ## First run
 
-Authorization window:
-![Main Window](https://coderlog.top/github/images/main_window.png)
+Authorization window:<br>
+![Main Window](https://coderlog.top/github/images/main_window.png)<br>
 
 You will receive the authorization data in your profile at remote.it!
 Description of login fields:
 **Username** - account login (email)
 **Password** - account password
-**Device address** - The Service ID of your connection can be found in a pop-up window when you click on the connected device.
-![Device address](https://coderlog.top/github/images/service_id.png)
-**Developer key** - This is your unique developer API key for using and accessing remote.it API. Do not share it with anyone. You can find it in your account settings:
-![Device address](https://coderlog.top/github/images/devkey.png)
+**Device address** - The Service ID of your connection can be found in a pop-up window when you click on the connected device.<br>
+![Device address](https://coderlog.top/github/images/service_id.png)<br>
+**Developer key** - This is your unique developer API key for using and accessing remote.it API. Do not share it with anyone. You can find it in your account settings:<br>
+![Device address](https://coderlog.top/github/images/devkey.png)<br>
 **SSH Username** - user login on your server
 **Remember me** - checkbox to save all authorization data into configuration file
 After filling in all fields, press **Login**.
 If all fields are filled in correctly, you will be logged in and the **Windows terminal** window will open asking you to enter a password from your server user account.
 The terminal may also ask for permission to trust the server, for which you need to enter **yes**.
-After that you will be authorized on your server without using the remote.it web interface:
-![Device address](https://coderlog.top/github/images/term.png)
+After that you will be authorized on your server without using the remote.it web interface:<br>
+![Device address](https://coderlog.top/github/images/term.png)<br>
 
 ## Logging
 The program contains logging in the file /logs/cdllog.log.
@@ -154,24 +154,24 @@ fbs installer
 
 ## Первый запуск
 
-Окно авторизации:
-![Main Window](https://coderlog.top/github/images/main_window.png)
+Окно авторизации:<br>
+![Main Window](https://coderlog.top/github/images/main_window.png)<br>
 
 Данные для авторизации вы получите в своём профиле на remote.it!
 Описание полей авторизации:
 **Username** - логин учетной записи (email)
 **Password** - пароль учётной записи
-**Device address** - Service ID вашего подключения можно найти в сплывающем окне при нажатии на подключённое устройство.
-![Device address](https://coderlog.top/github/images/service_id.png)
-**Developer key** - Это ваш уникальный ключ API разработчика для использования и доступа к remote.it API. Не делитесь им ни с кем. Найти его можете в настройках аккаунта:
-![Device address](https://coderlog.top/github/images/devkey.png)
+**Device address** - Service ID вашего подключения можно найти в сплывающем окне при нажатии на подключённое устройство.<br>
+![Device address](https://coderlog.top/github/images/service_id.png)<br>
+**Developer key** - Это ваш уникальный ключ API разработчика для использования и доступа к remote.it API. Не делитесь им ни с кем. Найти его можете в настройках аккаунта:<br>
+![Device address](https://coderlog.top/github/images/devkey.png)<br>
 **SSH Username** - логин пользователя на вашем сервере
 **Remember me** - чекбокс для сохранения всех данных авторизации в конфигурационный файл
 После заполнения всех полей нажимаем **Login**
 Если все поля заполненны правильно, произойдёт авторизация и откроется окно **Windows terminal** с предложением ввести пароль от учетной записи пользователя вашего сервера.
 Также терминал может запросить разрешение доверия серверу, на что нужно ввести **yes**
-После чего вы будете авторизированы на вашем сервере без использования веб интерфейса remote.it:
-![Device address](https://coderlog.top/github/images/term.png)
+После чего вы будете авторизированы на вашем сервере без использования веб интерфейса remote.it:<br>
+![Device address](https://coderlog.top/github/images/term.png)<br>
 
 ## Логирование
 В программе присутствует логирование в файл /logs/cdllog.log
