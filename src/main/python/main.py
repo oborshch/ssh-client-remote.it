@@ -161,14 +161,14 @@ def connect():
     
     logger().info(" | "+date_log+" | Connect to server: "+server+":"+port+" | Username: "+os.getlogin())
     os.system('wt ssh '+login+'@'+ server + ' -p'+port)
-    
+    work()
 
 
 ''' App status and info '''
 
 def work():
     tkWindow = Tk()  
-    tkWindow.geometry("420x362+300+300")
+    tkWindow.geometry("420x300+300+300")
     tkWindow.resizable(width=False, height=False)
     tkWindow.iconbitmap('Icon.ico')  
     tkWindow.title('CDLSRV | Connection status')
@@ -189,5 +189,4 @@ def work():
 
 authentication()
 logger().info(" | "+date_log+" | Start CDLSRV Client | Username: "+os.getlogin())
-work()
 connect()
