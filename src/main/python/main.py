@@ -173,7 +173,6 @@ def work():
     tkWindow.iconbitmap('Icon.ico')  
     tkWindow.title('CDLSRV | Connection status')
 
-    ''' remote.it login '''
     statusLabel = Label(tkWindow, text="Connection status").grid(row=0, column=0)
     calculated_text = Text(tkWindow, height=14, width=50)
     calculated_text.grid(row=4, column=0, sticky='nsew', columnspan=3)
@@ -181,7 +180,10 @@ def work():
     scrollb = Scrollbar(tkWindow, command=calculated_text.yview)
     scrollb.grid(row=4, column=4, sticky='nsew')
     calculated_text.configure(yscrollcommand=scrollb.set)
-    username = StringVar()
+    statusLabel = StringVar()
+    with open('logs/cdl.log') as f:
+        data = f.read()
+        calculated_text.insert('1.0', data)
     tkWindow.mainloop()
 
 
